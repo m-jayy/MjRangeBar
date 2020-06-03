@@ -157,6 +157,36 @@ public class RangeBarGraph extends View {
 
     }
 
+
+    public void setRangeBarBackgroundColor(String colorCode)
+    {
+        rangeBarBackgroundColor=Color.parseColor(colorCode);
+    }
+    public void setRangeBarSelectedColor(String colorCode)
+    {
+        RangeBarSelectedColor=Color.parseColor(colorCode);
+    }
+    public void setRangeBarNotSelectedColor(String colorCode)
+    {
+        RangeBarNotSelectedColor=Color.parseColor(colorCode);
+    }
+    public void setRangeBarMinMaxTextColor(String colorCode)
+    {
+        RangeBarMinMaxTextColor=Color.parseColor(colorCode);
+    }
+    public void setRangeBarValueTextColor(String colorCode)
+    {
+        RangeBarValueTextColor=Color.parseColor(colorCode);
+    }
+    public void setvalueCircleColor(String colorCode)
+    {
+        valueCircleColor=Color.parseColor(colorCode);
+    }
+    public void setoutOfBoundColor(String colorCode)
+    {
+        outOfBoundColor=Color.parseColor(colorCode);
+    }
+
     public void setValues(double minValue,double MaxValue, double startKnobValue, double EndKnowValue, double LabResuleValue)
     {
         startKnobValueTmp = startKnobValue;
