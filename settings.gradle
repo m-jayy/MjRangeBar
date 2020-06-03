@@ -1,0 +1,2 @@
+include ':app', ':rangebar_graph'
+rootProject.name='RangeBar'
