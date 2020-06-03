@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,8 +21,8 @@ public class RangeBarGraph extends View {
     private double sliderWidth, sliderHeight;//real size of the view that holds the slider
     private Paint paintSelected, paintNotSelected, paintText,paintCircle,PaintLabResultValue,PaintOutOfBound;
     RectF rectangleSelected,rectangleNotSelected;
-    double LabResultValue;
-    double LabResultValueTemp;
+    double ItemValue;
+    double ItemValueTemp;
     double LK,RK;
     double left_boundStart , right_boundEnd;
     double RangebarYAxisiStart,RangebarYAxisiend;
@@ -30,11 +31,11 @@ public class RangeBarGraph extends View {
     double val_max;
     double val_min;
 
-    int rangeBarBackgroundColor = Color.parseColor("#ffffff");
+    int rangeBarBackgroundColor = Color.parseColor("#00ffffff");
     int RangeBarSelectedColor = Color.parseColor("#eaeaea");
-    int RangeBarNotSelectedColor = Color.parseColor("#eaeaea");
+    int RangeBarStrokeColor = Color.parseColor("#eaeaea");
     int RangeBarMinMaxTextColor = Color.parseColor("#333333");
-    int RangeBarValueTextColor = Color.parseColor("#62b0df");
+    int RangeBarValueTextColor = Color.parseColor("#333333");
     int valueCircleColor = Color.parseColor("#333333");
     int outOfBoundColor = Color.parseColor("#FF0000");
 
@@ -85,7 +86,7 @@ public class RangeBarGraph extends View {
 
             RK = (Double) ( endKnobValueTmp*ratio+right_boundEnd-(val_max*ratio));
 
-            LabResultValueTemp = (Double) ( LabResultValue*ratio+right_boundEnd-(val_max*ratio)); //labresult value in width for black circle
+            ItemValueTemp = (Double) ( ItemValue*ratio+right_boundEnd-(val_max*ratio)); //labresult value in width for black circle
 
 
             //////////////////////////////////////////////////////////////////////
@@ -95,7 +96,7 @@ public class RangeBarGraph extends View {
             paintNotSelected = new Paint();//the paint outside knobs
             paintNotSelected.setStyle(Paint.Style.STROKE);
             paintNotSelected.setStrokeWidth(3);
-            paintNotSelected.setColor(RangeBarNotSelectedColor);
+            paintNotSelected.setColor(RangeBarStrokeColor);
 
             paintText = new Paint();//the paint for the slider data(the values)
             paintText.setTextSize(24);
@@ -105,7 +106,7 @@ public class RangeBarGraph extends View {
             paintCircle.setColor(valueCircleColor);
 
             PaintLabResultValue = new Paint();
-            if(LabResultValue>startKnobValueTmp && LabResultValue<endKnobValueTmp) {
+            if(ItemValue>startKnobValueTmp && ItemValue<endKnobValueTmp) {
                 PaintLabResultValue.setColor(RangeBarValueTextColor);
             }
             else {
@@ -138,21 +139,21 @@ public class RangeBarGraph extends View {
         canvas.drawRoundRect(rectangleNotSelected, 20,20,paintNotSelected);
 
 
-        if(LabResultValue<startKnobValueTmp)
+        if(ItemValue<startKnobValueTmp)
         {
-            canvas.drawText(Double.toString(LabResultValue), (float) left_boundStart+20, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
+            canvas.drawText(Double.toString(ItemValue), (float) left_boundStart+20, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
             canvas.drawText("OUT OF RANGE", (float) left_boundStart+20, (float) RangebarYAxisiend -14, PaintOutOfBound); //50
         }
-        else if(LabResultValue>endKnobValueTmp)
+        else if(ItemValue>endKnobValueTmp)
         {
-            canvas.drawText(Double.toString(LabResultValue), (float) right_boundEnd-60, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
+            canvas.drawText(Double.toString(ItemValue), (float) right_boundEnd-60, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
             canvas.drawText("OUT OF RANGE", (float) right_boundEnd-140, (float) RangebarYAxisiend -14, PaintOutOfBound); //50
             //Toast.makeText(getContext(), Integer.toString(canvas.getWidth()), Toast.LENGTH_SHORT).show();
         }
         else
         {
-            canvas.drawCircle((float) LabResultValueTemp, (float) RangebarYAxisiStart + (float) Circleradius, (float) Circleradius, paintCircle);
-            canvas.drawText(Double.toString(LabResultValue), (float)LabResultValueTemp -(float) (Circleradius / 2)-8, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
+            canvas.drawCircle((float) ItemValueTemp, (float) RangebarYAxisiStart + (float) Circleradius, (float) Circleradius, paintCircle);
+            canvas.drawText(Double.toString(ItemValue), (float)ItemValueTemp -(float) (Circleradius / 2)-8, (float) RangebarYAxisiStart - 20, PaintLabResultValue); //50
         }
 
     }
@@ -160,15 +161,17 @@ public class RangeBarGraph extends View {
 
     public void setRangeBarBackgroundColor(String colorCode)
     {
+
         rangeBarBackgroundColor=Color.parseColor(colorCode);
     }
+
     public void setRangeBarSelectedColor(String colorCode)
     {
         RangeBarSelectedColor=Color.parseColor(colorCode);
     }
-    public void setRangeBarNotSelectedColor(String colorCode)
+    public void setRangeBarStrokeColor(String colorCode)
     {
-        RangeBarNotSelectedColor=Color.parseColor(colorCode);
+        RangeBarStrokeColor=Color.parseColor(colorCode);
     }
     public void setRangeBarMinMaxTextColor(String colorCode)
     {
@@ -187,15 +190,15 @@ public class RangeBarGraph extends View {
         outOfBoundColor=Color.parseColor(colorCode);
     }
 
-    public void setValues(double minValue,double MaxValue, double startKnobValue, double EndKnowValue, double LabResuleValue)
+    public void setValues(double RangeBarMinValue,double RangeBarMaxValue, double startRange, double EndRange, double ItemValue)
     {
-        startKnobValueTmp = startKnobValue;
-        endKnobValueTmp = EndKnowValue;
+        startKnobValueTmp = startRange;
+        endKnobValueTmp = EndRange;
 
-        LabResultValue = LabResuleValue;
+        this.ItemValue = ItemValue;
 
-        val_max = MaxValue;
-        val_min = minValue;
+        val_max = RangeBarMaxValue;
+        val_min = RangeBarMinValue;
     }
 
     public RangeBarGraph(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
