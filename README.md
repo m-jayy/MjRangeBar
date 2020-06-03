@@ -56,6 +56,9 @@ RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 14.0);
 //        RangeBarGraph.setoutOfBoundColor("#FF0000");
 ```
 
+![github-small](https://github.com/m-jayy/MjRangeBar/blob/master/screenshots/ss1.png)
+![github-small](https://github.com/m-jayy/MjRangeBar/blob/master/screenshots/ss1.png)
+
 # Plan for Future
 
  - Better documentation.
