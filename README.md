@@ -69,9 +69,9 @@ RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 80.0);
  
 
 # License
-```sh
+
 **Free Software, Hell Yeah!** :metal:
-```
+
 
 
 # Contribution
