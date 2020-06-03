@@ -1,15 +1,2 @@
 <resources>
-    <string name="app_name">RangeBar_Graph</string>
-
-    <string name="Fun_prompt">Choose a Action</string>
-
-    <string-array name="Fun_arrays">
-        <item>rangeBar Background Color</item>
-        <item>RangeBar Selected Color</item>
-        <item>RangeBar Stroke Color</item>
-        <item>RangeBar MinMax Text Color</item>
-        <item>RangeBar Value Text Color</item>
-        <item>Range Circle Color</item>
-        <item>out Of Bound Color</item>
-    </string-array>
 </resources>
