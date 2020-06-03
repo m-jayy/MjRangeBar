@@ -15,6 +15,8 @@ The MjRangeBar is android RangeBar Graph library that adds some basic material s
   - out Of Bound Text Color
   
   **Supported on API Level 15 and above.**
+  
+  ![github-small](https://github.com/m-jayy/MjRangeBar/blob/master/screenshots/ss1.png)
 
 # How to Use
 In your project build.gradle. Add the following lines
@@ -45,9 +47,9 @@ implementation 'com.github.m-jayy:MjRangeBar:0.1.0'
 #### Java
 ```Java
 RangeBarGraph = (RangeBarGraph) findViewById(R.id.RangeBarGraph);
-RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 14.0);
+RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 80.0);
 
-//        RangeBarGraph.setRangeBarBackgroundColor("00ffffff");
+//        RangeBarGraph.setRangeBarBackgroundColor("ffffff");
 //        RangeBarGraph.setRangeBarStrokeColor("#eaeaea");
 //        RangeBarGraph.setRangeBarSelectedColor("#eaeaea");
 //        RangeBarGraph.setRangeBarValueTextColor("#333333");
@@ -56,7 +58,7 @@ RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 14.0);
 //        RangeBarGraph.setoutOfBoundColor("#FF0000");
 ```
 
-![github-medium](https://github.com/m-jayy/MjRangeBar/blob/master/screenshots/ss1.png)
+
 ![github-small](https://github.com/m-jayy/MjRangeBar/blob/master/screenshots/ss2.png)
 
 # Plan for Future
