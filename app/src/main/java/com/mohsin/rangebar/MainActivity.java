@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RangeBarGraph = (RangeBarGraph) findViewById(R.id.RangeBarGraph);
-        RangeBarGraph.setValues(0.0, 400.0, 130.0, 350.0, 140.0);
+        RangeBarGraph.setValues(0.0, 400.0, 100.0, 350.0, 140.0);
 
 //        RangeBarGraph.setRangeBarBackgroundColor("00ffffff");
 //        RangeBarGraph.setRangeBarStrokeColor("#eaeaea");
